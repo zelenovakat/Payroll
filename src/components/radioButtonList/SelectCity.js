@@ -1,10 +1,11 @@
 import React from "react"
 import RadioButton from "../RadioButton"
+import { WrapperItem } from "../../helpers/style"
 
 const SelectCity = ({ city, setCity }) => {
   const cities = ["Stockholm", "Gothenburg"]
   return (
-    <div>
+    <WrapperItem>
       <h2>City</h2>
       {cities.map((cityItem) => (
         <RadioButton
@@ -15,7 +16,7 @@ const SelectCity = ({ city, setCity }) => {
           label={cityItem}
         />
       ))}
-    </div>
+    </WrapperItem>
   )
 }
 

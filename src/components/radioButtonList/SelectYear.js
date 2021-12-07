@@ -1,10 +1,10 @@
 import RadioButton from "../RadioButton"
-
+import { WrapperItem } from "../../helpers/style"
 const SelectYear = ({ year, setYear }) => {
   const years = ["2019", "2020"]
 
   return (
-    <div>
+    <WrapperItem>
       <h2>Income year</h2>
       {years.map((yearItem) => (
         <RadioButton
@@ -15,7 +15,7 @@ const SelectYear = ({ year, setYear }) => {
           label={yearItem}
         />
       ))}
-    </div>
+    </WrapperItem>
   )
 }
 
