@@ -1,12 +1,22 @@
 import React, { useState } from "react"
+import Experience from "./dropdownList/Experience"
 import Profession from "./dropdownList/Profession"
 
 const Form = () => {
   const [profession, setProfession] = useState("")
+  const [yearsOfExperience, setYearsOfExperience] = useState("")
   return (
-    <div>
-      <Profession profession={profession} setProfession={setProfession} />
-    </div>
+    <form>
+      <div>
+        <Profession profession={profession} setProfession={setProfession} />
+      </div>
+      <div>
+        <Experience
+          yearsOfExperience={yearsOfExperience}
+          setYearsOfExperience={setYearsOfExperience}
+        />
+      </div>
+    </form>
   )
 }
 
