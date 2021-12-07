@@ -1,12 +1,11 @@
 import RadioButton from "../RadioButton"
 
-const IncomeYear = ({ year, setYear }) => {
+const SelectYear = ({ year, setYear }) => {
   const years = ["2019", "2020"]
 
   return (
     <div>
       <h2>Income year</h2>
-
       {years.map((yearItem) => (
         <RadioButton
           selected={year}
@@ -20,4 +19,4 @@ const IncomeYear = ({ year, setYear }) => {
   )
 }
 
-export default IncomeYear
+export default SelectYear

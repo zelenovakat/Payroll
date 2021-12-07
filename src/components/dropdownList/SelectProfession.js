@@ -1,7 +1,7 @@
 import React from "react"
 import Dropdown from "../Dropdown"
 
-const Profession = ({ profession, setProfession }) => {
+const SelectProfession = ({ profession, setProfession }) => {
   const typeOfProfession = ["Programmer", "Teacher", "Cashier"]
   const onChangeHandle = (value) => {
     setProfession(value)
@@ -18,4 +18,4 @@ const Profession = ({ profession, setProfession }) => {
   )
 }
 
-export default Profession
+export default SelectProfession

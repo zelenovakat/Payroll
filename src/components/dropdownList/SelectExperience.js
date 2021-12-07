@@ -1,7 +1,7 @@
 import React from "react"
 import Dropdown from "../Dropdown"
 
-const Experience = ({ yearsOfExperience, setYearsOfExperience }) => {
+const SelectExperience = ({ yearsOfExperience, setYearsOfExperience }) => {
   const years = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11+"]
   const onChangeHandle = (value) => {
     setYearsOfExperience(value)
@@ -18,4 +18,4 @@ const Experience = ({ yearsOfExperience, setYearsOfExperience }) => {
   )
 }
 
-export default Experience
+export default SelectExperience
