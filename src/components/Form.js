@@ -9,7 +9,7 @@ import {
   basicSalaries,
   calculateAdditionForExperience,
   calculateTax,
-} from "../helpers/calculateSalary"
+} from "../helpers/calculateSalaryAndTax"
 const Form = () => {
   const [profession, setProfession] = useState("")
   const [yearsOfExperience, setYearsOfExperience] = useState("")
