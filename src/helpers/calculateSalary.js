@@ -28,3 +28,16 @@ export const calculateBasicTax = (city, incomeYear) => {
   }
   return basicTaxPrecentage
 }
+
+export const calculateTax = (city, incomeYear, salary) => {
+  const basicTaxPercentage = calculateBasicTax(city, incomeYear)
+  if (salary <= 36000) {
+    return salary * basicTaxPercentage
+  }
+  if (salary <= 45000) {
+    const extra50Tax = salary - 36000
+    return 36000 * basicTaxPercentage + extra50Tax * 0.5
+  }
+  const extra70Tax = salary - 45000
+  return 36000 * basicTaxPercentage + 9000 * 0.5 + extra70Tax * 0.7
+}
