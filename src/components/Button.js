@@ -35,4 +35,7 @@ const StyledButton = styled.button`
     background-color: #5db19e;
     cursor: pointer;
   }
+  &:disabled {
+    background-color: #b3b3b3;
+  }
 `
