@@ -1,4 +1,5 @@
 import React from "react"
+import styled from "styled-components"
 
 const RadioButton = ({ label, value, selected, onChange }) => {
   const handleChange = (e) => {
@@ -11,9 +12,14 @@ const RadioButton = ({ label, value, selected, onChange }) => {
   return (
     <label>
       <input type="radio" value={value} onChange={handleChange} checked={isChecked} />
-      <p>{label}</p>
+      <RadioButtonLabel>{label}</RadioButtonLabel>
     </label>
   )
 }
 
 export default RadioButton
+
+const RadioButtonLabel = styled.span`
+  margin-left: 10px;
+  margin-bottom: 10px;
+`

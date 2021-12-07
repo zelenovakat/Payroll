@@ -1,4 +1,5 @@
 import React from "react"
+import styled from "styled-components"
 
 const Dropdown = ({ selectedValue, options, setSelectedValue }) => {
   const handleChange = (e) => {
@@ -7,7 +8,7 @@ const Dropdown = ({ selectedValue, options, setSelectedValue }) => {
 
   return (
     <label>
-      <select value={selectedValue} onChange={handleChange}>
+      <StyledSelect value={selectedValue} onChange={handleChange}>
         <option value="" disabled>
           choose your option
         </option>
@@ -18,9 +19,17 @@ const Dropdown = ({ selectedValue, options, setSelectedValue }) => {
             </option>
           )
         })}
-      </select>
+      </StyledSelect>
     </label>
   )
 }
 
 export default Dropdown
+
+const StyledSelect = styled.select`
+  background: transparent;
+  padding: 15px;
+  min-width: 150px;
+  border-radius: 4px;
+  outline: none;
+`

@@ -10,6 +10,9 @@ import {
   calculateAdditionForExperience,
   calculateTax,
 } from "../helpers/calculateSalaryAndTax"
+
+import { device } from "../helpers/mediaQueries"
+
 const Form = () => {
   const [profession, setProfession] = useState("")
   const [yearsOfExperience, setYearsOfExperience] = useState("")
@@ -21,6 +24,16 @@ const Form = () => {
 
   const nextSlide = () => {
     setActiveSlide(activeSlide + 1)
+  }
+
+  const resetSlideAndForm = () => {
+    setActiveSlide(1)
+    setProfession("")
+    setYearsOfExperience("")
+    setYear("")
+    setCity("")
+    setTotalSalaryWithTax(0)
+    setTax(0)
   }
 
   const calculateSalary = () => {
@@ -42,44 +55,73 @@ const Form = () => {
     <div>
       {activeSlide === 1 && (
         <Slide>
-          <h1>How much could you earn?</h1>
-          <Button onClick={nextSlide}>Start</Button>
+          <SlideBox>
+            <h1>How much could you earn?</h1>
+            <Button onClick={nextSlide}>Start</Button>
+          </SlideBox>
         </Slide>
       )}
       {activeSlide === 2 && (
         <Slide>
-          <SelectProfession profession={profession} setProfession={setProfession} />
-          <Button onClick={nextSlide}>Next</Button>
+          <SlideBox>
+            <SelectProfession profession={profession} setProfession={setProfession} />
+            <Button disabled={!profession} onClick={nextSlide}>
+              Next
+            </Button>
+          </SlideBox>
         </Slide>
       )}
       {activeSlide === 3 && (
         <Slide>
-          <SelectExperience
-            yearsOfExperience={yearsOfExperience}
-            setYearsOfExperience={setYearsOfExperience}
-          />
-          <Button onClick={nextSlide}>Next</Button>
+          <SlideBox>
+            <SelectExperience
+              yearsOfExperience={yearsOfExperience}
+              setYearsOfExperience={setYearsOfExperience}
+            />
+            <Button disabled={!yearsOfExperience} onClick={nextSlide}>
+              Next
+            </Button>
+          </SlideBox>
         </Slide>
       )}
       {activeSlide === 4 && (
         <Slide>
-          <SelectYear year={year} setYear={setYear} />
-          <Button onClick={nextSlide}>Next</Button>
+          <SlideBox>
+            <SelectYear year={year} setYear={setYear} />
+            <Button disabled={!year} onClick={nextSlide}>
+              Next
+            </Button>
+          </SlideBox>
         </Slide>
       )}
       {activeSlide === 5 && (
         <Slide>
-          <SelectCity city={city} setCity={setCity} />
-          <Button onClick={calculateSalary}>Calculate</Button>
+          <SlideBox>
+            <SelectCity city={city} setCity={setCity} />
+            <Button disabled={!city} onClick={calculateSalary}>
+              Calculate
+            </Button>
+          </SlideBox>
         </Slide>
       )}
       {activeSlide === 6 && (
         <Slide>
-          <h2>Salary ex Tax: {totalSalaryWithTax - tax} kr</h2>
-          <h2>TAX: {tax} kr</h2>
-          <h2>Total salary: {totalSalaryWithTax} kr</h2>
+          <SlideBox>
+            <SlideTitle>Your result:</SlideTitle>
+            <LastSlideResult>
+              <SlideP>
+                Salary: <SlideSpan>{totalSalaryWithTax - tax} kr</SlideSpan>
+              </SlideP>
+              <SlideP>
+                Tax: <SlideSpan>{tax} kr</SlideSpan>
+              </SlideP>
+              <LastSlideTotal>
+                Total: <SlideSpan>{totalSalaryWithTax} kr</SlideSpan>
+              </LastSlideTotal>
 
-          <Button onClick={() => setActiveSlide(1)}>Start over</Button>
+              <Button onClick={resetSlideAndForm}>Start over</Button>
+            </LastSlideResult>
+          </SlideBox>
         </Slide>
       )}
     </div>
@@ -96,6 +138,58 @@ const Slide = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: #262626;
-  color: #fff;
+  background-color: #f7e7b4;
+
+  @media ${device.laptopL} {
+    background: transparent;
+  }
+`
+
+const SlideBox = styled.div`
+  width: 100%;
+  background-color: #f7e7b4;
+  padding: 80px 0;
+  border-radius: 17px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  @media ${device.laptopL} {
+    width: 650px;
+    padding: 20px 0;
+    min-height: 390px;
+    align-items: center;
+    justify-content: center;
+  }
+`
+
+const SlideTitle = styled.h2`
+  margin-bottom: 30px;
+`
+
+const LastSlideResult = styled.div`
+  width: 250px;
+  justify-content: flex-end;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+`
+
+const SlideP = styled.p`
+  font-size: 16px;
+  font-weight: bold;
+  margin: 5px 0;
+  display: flex;
+  justify-content: space-between;
+`
+
+const LastSlideTotal = styled.p`
+  border-top: 1px solid #928e8e;
+  margin-top: 15px;
+  padding-top: 10px;
+`
+
+const SlideSpan = styled.span`
+  font-size: 16px;
+  font-weight: normal;
 `

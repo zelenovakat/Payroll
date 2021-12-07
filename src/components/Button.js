@@ -1,14 +1,14 @@
 import React from "react"
 import styled from "styled-components"
 
-const Button = ({ children, onClick }) => {
+const Button = ({ children, onClick, disabled }) => {
   const handleButtonClick = (e) => {
     e.preventDefault()
     onClick()
   }
 
   return (
-    <StyledButton type="button" onClick={handleButtonClick}>
+    <StyledButton type="button" onClick={handleButtonClick} disabled={disabled}>
       {children}
     </StyledButton>
   )
@@ -17,17 +17,22 @@ const Button = ({ children, onClick }) => {
 export default Button
 
 const StyledButton = styled.button`
-  background: #fff;
   border: none;
-  border-radius: 3px;
-  color: #961f8c;
-  transition: background 0.2s ease-in-out;
-  min-height: 30px;
   min-width: 150px;
-  margin: 16px 0;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  text-decoration: none;
+  color: black;
+  background-color: #68c4af;
+  border-radius: 4px;
+  margin-top: 30px;
+  transition: background 0.1s ease-in-out;
 
   &:hover {
-    background: #c524b8;
-    color: #fff;
+    background-color: #5db19e;
+    cursor: pointer;
   }
 `
