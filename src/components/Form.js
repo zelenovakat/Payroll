@@ -3,12 +3,14 @@ import SelectExperience from "./dropdownList/SelectExperience"
 import SelectProfession from "./dropdownList/SelectProfession"
 import SelectYear from "./radioButtonList/SelectYear"
 import SelectCity from "./radioButtonList/SelectCity"
-
+import Button from "../components/Button"
 const Form = () => {
   const [profession, setProfession] = useState("")
   const [yearsOfExperience, setYearsOfExperience] = useState("")
   const [year, setYear] = useState("")
   const [city, setCity] = useState("")
+
+  const calculateSalary = () => {}
 
   return (
     <form>
@@ -27,6 +29,7 @@ const Form = () => {
       <div>
         <SelectCity city={city} setCity={setCity} />
       </div>
+      <Button onClick={calculateSalary}>Calculate</Button>
     </form>
   )
 }
