@@ -1,6 +1,7 @@
+import Form from "../src/components/Form"
 
 function App() {
-  return <h1>Hello</h1>
+  return <Form />
 }
 
 export default App
